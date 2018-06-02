@@ -28,6 +28,7 @@ class CategoryRoute extends StatefulWidget {
 class _CategoryRouteState extends State<CategoryRoute> {
   Category _defaultCategory;
   Category _currentCategory;
+
   // Widgets are supposed to be deeply immutable objects. We can update and edit
   // _categories as we build our app, and when we pass it into a widget's
   // `children` property, we call .toList() on it.
@@ -106,7 +107,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
     var categoryIndex = 0;
     data.keys.forEach((key) {
       final List<Unit> units =
-      data[key].map<Unit>((dynamic data) => Unit.fromJson(data)).toList();
+          data[key].map<Unit>((dynamic data) => Unit.fromJson(data)).toList();
 
       var category = Category(
         name: key,
@@ -175,9 +176,9 @@ class _CategoryRouteState extends State<CategoryRoute> {
           return CategoryTile(
             category: _category,
             onTap:
-            _category.name == apiCategory['name'] && _category.units.isEmpty
-                ? null
-                : _onCategoryTap,
+                _category.name == apiCategory['name'] && _category.units.isEmpty
+                    ? null
+                    : _onCategoryTap,
           );
         },
         itemCount: _categories.length,
@@ -221,7 +222,7 @@ class _CategoryRouteState extends State<CategoryRoute> {
     );
     return Backdrop(
       currentCategory:
-      _currentCategory == null ? _defaultCategory : _currentCategory,
+          _currentCategory == null ? _defaultCategory : _currentCategory,
       frontPanel: _currentCategory == null
           ? UnitConverter(category: _defaultCategory)
           : UnitConverter(category: _currentCategory),
